@@ -4,33 +4,35 @@ logSecond();
 logThird();
 logLast();
 
+function getPromise() {
+
+    try {   
+
+        let endIndex = 100000;
+        for (let i = 0; i < endIndex; i++) {
+            for (let j = 0; j < endIndex; j++) {            
+            }
+        }
+        return Promise.resolve("fired promise success");
+
+    } catch (error) {
+        return Promise.reject("fired promise error");
+    }
+
+}
+
 function logPromise() {
 
-    // Create Promise
-    let myPromise = new Promise(function(resolve, reject) {
-    
-        try {
-             
-            let endIndex = 100000;
-            for (let i = 0; i < endIndex; i++) {
-                for (let j = 0; j < endIndex; j++) {            
-                }
-            }
-            resolve("fired promise success");
-    
-        } catch (error) {
-            reject("fired promise error");
-        }
-    
+    let myPromise = getPromise();
+
+    myPromise
+    .then(response => {
+        console.log(response);
+    })
+    .catch(error => {
+        console.log(error);
     });
 
-    // Call Promise
-    myPromise.then(
-        // Function run if Promise resolve is called
-        function(message) {console.log(message);},
-        // Function run if Promise reject is called
-        function(error) {console.log(error);}
-    );
 }
 
 function logFirst() {
