@@ -4,23 +4,35 @@ logSecond();
 logThird();
 logLast();
 
-async function runAsync() {
+async function getAsync() {
 
-    let endIndex = 100000;
-    for (let i = 0; i < endIndex; i++) {
-        for (let j = 0; j < endIndex; j++) {            
+    try {   
+
+        let endIndex = 100000;
+        for (let i = 0; i < endIndex; i++) {
+            for (let j = 0; j < endIndex; j++) {            
+            }
         }
+        return "fired async success";
+
+    } catch (error) {
+        return Promise.reject("fired async error");
     }
 
-    return "fired async";    
 }
 
 function logAsync() {
 
-    runAsync().then(
-        function(message) {console.log(message);}
-    );
-    
+    let myAsync = getAsync();
+
+    myAsync
+    .then(response => {
+        console.log(response);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
 }
 
 function logFirst() {
